@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    url: jdbc:sqlserver://revioplusappserver.database.windows.net:1433;database=revioplus-db;encrypt=true;trustServerCertificate=false;loginTimeout=30;
+    username: usadmin
+    password: Admin123*
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+  data:
+    jdbc:
+      repositories:
+        enabled: true
+
+    # Desactiva ejecución automática de scripts al inicio por ahora
+    sql:
+      init:
+        mode: never
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
