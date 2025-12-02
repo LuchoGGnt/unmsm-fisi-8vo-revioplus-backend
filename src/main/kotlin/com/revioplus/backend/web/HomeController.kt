@@ -13,11 +13,12 @@ import org.springframework.web.bind.annotation.*
 class HomeController(
     private val recyclingService: RecyclingService
 ) {
-
+    /*
     data class CreateDepositRequest(
         val userId: Long,
         @field:Min(1) val bottles: Int
     )
+
 
     @GetMapping("/home")
     fun getHome(@RequestParam userId: Long): HomeDashboard =
@@ -26,4 +27,5 @@ class HomeController(
     @PostMapping("/deposits")
     fun createDeposit(@RequestBody req: CreateDepositRequest): RecyclingDeposit =
         recyclingService.registerDeposit(req.userId, req.bottles)
+     */
 }

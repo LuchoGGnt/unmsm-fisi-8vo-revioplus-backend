@@ -12,7 +12,7 @@ class RecyclingService(
     private val userRepo: UserJdbcRepository,
     private val depositRepo: RecyclingDepositJdbcRepository
 ) {
-
+ /*
     fun registerDeposit(userId: Long, bottles: Int): RecyclingDeposit {
         require(bottles > 0) { "La cantidad de botellas debe ser mayor a cero" }
 
@@ -76,4 +76,5 @@ class RecyclingService(
             recentDeposits = recent
         )
     }
+  */
 }
