@@ -42,7 +42,15 @@ class UserService(
         maxStreak = user.maxStreak,
         totalBottles = user.totalBottles,
         totalCo2Saved = user.totalCo2Saved,
-        nfcEnabled = user.nfcEnabled
+        nfcEnabled = user.nfcEnabled,
+
+        nextLevelXp = user.nextLevelXp,
+        lastDepositDateMillis = user.lastDepositDate?.atZone(ZoneId.systemDefault())?.toInstant()?.toEpochMilli(),
+        termsAccepted = user.termsAccepted,
+        acceptedTermsVersion = user.acceptedTermsVersion,
+        termsAcceptedDateMillis = user.termsAcceptedDate?.atZone(ZoneId.systemDefault())?.toInstant()?.toEpochMilli(),
+        userType = user.userType,
+        accountStatus = user.accountStatus
     )
 
 }

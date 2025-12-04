@@ -45,5 +45,14 @@ data class UserEntity(
 
     // Settings
     @Column("nfcEnabled")
-    val nfcEnabled: Boolean
+    val nfcEnabled: Boolean,
+
+    // Nuevos campos mapeados (Renombrados a inglés para consistencia en BD y Backend)
+    @Column("nextLevelXp") val nextLevelXp: Long = 1000,
+    @Column("lastDepositDate") val lastDepositDate: LocalDateTime? = null,
+    @Column("termsAccepted") val termsAccepted: Boolean = false,
+    @Column("acceptedTermsVersion") val acceptedTermsVersion: String? = null,
+    @Column("termsAcceptedDate") val termsAcceptedDate: LocalDateTime? = null,
+    @Column("userType") val userType: String,
+    @Column("accountStatus") val accountStatus : String
 )

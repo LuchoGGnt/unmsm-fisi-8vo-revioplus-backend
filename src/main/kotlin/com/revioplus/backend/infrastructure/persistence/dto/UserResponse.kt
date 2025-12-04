@@ -33,5 +33,14 @@ data class UserResponse(
     @JsonProperty("totalCo2Saved") val totalCo2Saved: Double,
     
     // Settings
-    @JsonProperty("nfcEnabled") val nfcEnabled: Boolean
+    @JsonProperty("nfcEnabled") val nfcEnabled: Boolean,
+
+    // Campos faltantes para mapear con la Entidad en Frontend
+    @JsonProperty("nextLevelXp") val nextLevelXp: Long,
+    @JsonProperty("lastDepositDateMillis") val lastDepositDateMillis: Long?,
+    @JsonProperty("termsAccepted") val termsAccepted: Boolean,
+    @JsonProperty("acceptedTermsVersion") val acceptedTermsVersion: String?,
+    @JsonProperty("termsAcceptedDateMillis") val termsAcceptedDateMillis: Long?,
+    @JsonProperty("userType") val userType: String,
+    @JsonProperty("accountStatus") val accountStatus : String
 )
