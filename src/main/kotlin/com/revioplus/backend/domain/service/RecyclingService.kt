@@ -1,17 +1,39 @@
 package com.revioplus.backend.domain.service
 
-import com.revioplus.backend.domain.model.*
+import com.revioplus.backend.infrastructure.persistence.dto.RecyclingDepositResponse
 import com.revioplus.backend.infrastructure.persistence.entity.RecyclingDepositEntity
+import com.revioplus.backend.infrastructure.persistence.repository.DepositStationRepository
 import com.revioplus.backend.infrastructure.persistence.repository.RecyclingDepositJdbcRepository
-import com.revioplus.backend.infrastructure.persistence.repository.UserJdbcRepository
+import com.revioplus.backend.infrastructure.persistence.repository.RecyclingDepositRepository
+import com.revioplus.backend.infrastructure.persistence.repository.UserRepository
 import org.springframework.stereotype.Service
-import java.time.OffsetDateTime
+import java.time.ZoneId
 
 @Service
 class RecyclingService(
-    private val userRepo: UserJdbcRepository,
-    private val depositRepo: RecyclingDepositJdbcRepository
+    private val depositStationRepo: DepositStationRepository,
+    private val recyclingDepositRepo: RecyclingDepositRepository
 ) {
+    fun getDepositsByUserId(userId:Long) : List<RecyclingDepositResponse>? {
+        val deposits = recyclingDepositRepo.findByUserId(userId)
+            ?: throw NoSuchElementException("No se pudieron encontrar los depositos del usuario")
+        return mapToDTO(deposits)
+    }
+
+    private fun mapToDTO(deposits : List<RecyclingDepositEntity>) = deposits
+        .map {it ->
+            RecyclingDepositResponse(
+                id = it.id,
+                userId = it.userId,
+                stationId = it.stationId,
+                stationName = depositStationRepo.findById(it.stationId).get().name,
+                bottlesCount = it.bottles,
+                xpGenerated = it.xp,
+                co2SavedKg = it.co2SavedKg,
+                createdAt = it.createdAt.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli()
+            )
+        }
+
  /*
     fun registerDeposit(userId: Long, bottles: Int): RecyclingDeposit {
         require(bottles > 0) { "La cantidad de botellas debe ser mayor a cero" }

@@ -1,13 +1,13 @@
 package com.revioplus.backend.domain.service
 import com.revioplus.backend.infrastructure.persistence.dto.UserResponse
 import com.revioplus.backend.infrastructure.persistence.entity.UserEntity
-import com.revioplus.backend.infrastructure.persistence.repository.UserJdbcRepository
+import com.revioplus.backend.infrastructure.persistence.repository.UserRepository
 import org.springframework.stereotype.Service
 import java.time.ZoneId
 
 @Service
 class UserService(
-    private val userRepo: UserJdbcRepository,
+    private val userRepo: UserRepository,
 ) {
 
     /*Obtener usuario por ID*/
