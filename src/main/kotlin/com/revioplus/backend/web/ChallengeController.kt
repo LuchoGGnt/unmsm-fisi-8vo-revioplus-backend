@@ -2,6 +2,8 @@ package com.revioplus.backend.web
 
 import com.revioplus.backend.domain.service.ChallengeService
 import com.revioplus.backend.infrastructure.persistence.dto.ChallengeDto
+import com.revioplus.backend.infrastructure.persistence.dto.ChallengeProgressRequestDto
+import com.revioplus.backend.infrastructure.persistence.dto.toEntity
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
@@ -19,5 +21,12 @@ class ChallengeController(
         } else {
             ResponseEntity.noContent().build()
         }
+    }
+
+    @PutMapping("/progress")
+    fun updateChallengeProgress(@RequestBody request: ChallengeProgressRequestDto){
+        val challenge = request.toEntity()
+        // Aquí deberías llamar a tu servicio para guardar la entidad, ej
+        challengeService.updateProgress(challenge)
     }
 }

@@ -1,6 +1,6 @@
 package com.revioplus.backend.web
 
-import com.revioplus.backend.domain.service.RecyclingService
+import com.revioplus.backend.domain.service.RecyclingDepositService
 import com.revioplus.backend.domain.service.UserService
 import com.revioplus.backend.domain.service.WalletService
 import com.revioplus.backend.infrastructure.persistence.dto.RecyclingDepositResponse
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController
 class UserController(
     private val userService : UserService,
     private val walletService : WalletService,
-    private val recyclingService: RecyclingService
+    private val recyclingDepositService: RecyclingDepositService
 ) {
 
     @GetMapping("/{userId}")
@@ -35,5 +35,5 @@ class UserController(
 
     @GetMapping("/{userId}/deposits")
     fun getDepositsData(@PathVariable userId: Long): ResponseEntity<List<RecyclingDepositResponse>> =
-        ResponseEntity.ok().body(recyclingService.getDepositsByUserId(userId))
+        ResponseEntity.ok().body(recyclingDepositService.getDepositsByUserId(userId))
 }

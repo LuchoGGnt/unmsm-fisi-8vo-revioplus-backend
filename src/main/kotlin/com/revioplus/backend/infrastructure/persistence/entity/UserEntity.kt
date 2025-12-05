@@ -7,7 +7,7 @@ import java.time.LocalDateTime
 
 @Table("users")
 data class UserEntity(
-    @Id val id: Long,
+    @Id val id: Long?,
     val username: String, // nombreMostrar
     @Column("firstName")
     val firstName: String?,
@@ -54,5 +54,5 @@ data class UserEntity(
     @Column("acceptedTermsVersion") val acceptedTermsVersion: String? = null,
     @Column("termsAcceptedDate") val termsAcceptedDate: LocalDateTime? = null,
     @Column("userType") val userType: String,
-    @Column("accountStatus") val accountStatus : String
+    @Column("accountStatus") val accountStatus: String
 )
