@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository
 
 interface RecyclingDepositJdbcRepository : CrudRepository<RecyclingDepositEntity, Long> {
 
-    fun findTop5ByUserIdOrderByDateTimeDesc(userId: Long): List<RecyclingDepositEntity>
+    fun findTop5ByUserId(userId: Long): List<RecyclingDepositEntity>
 
     @Query(
         """
