@@ -25,6 +25,8 @@ dependencies {
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core")
+    //Spring Security
+    implementation("org.springframework.boot:spring-boot-starter-security")
 
 	// Azure SQL / SQL Server
 	runtimeOnly("com.microsoft.sqlserver:mssql-jdbc:12.10.2.jre11")
