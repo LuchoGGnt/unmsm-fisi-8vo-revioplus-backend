@@ -11,4 +11,5 @@ data class LoginResponseDto(
     @JsonProperty("id") val id: Long,
     @JsonProperty("username") val username: String,
     @JsonProperty("email") val email: String,
+    @JsonProperty("token") val token: String,
 )
