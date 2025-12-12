@@ -1,8 +1,9 @@
 spring:
   datasource:
-    url: jdbc:sqlserver://revioplusappserver.database.windows.net:1433;database=revioplus-db;encrypt=true;trustServerCertificate=false;loginTimeout=30;
-    username: usadmin
-    password: Admin123*
+    # Usamos variables de entorno para inyectar la configuración desde Docker/Azure
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
 
   data:
@@ -10,10 +11,9 @@ spring:
       repositories:
         enabled: true
 
-    # Desactiva ejecución automática de scripts al inicio por ahora
-    sql:
-      init:
-        mode: never
+  sql:
+    init:
+      mode: never
 
 server:
   port: 8080
