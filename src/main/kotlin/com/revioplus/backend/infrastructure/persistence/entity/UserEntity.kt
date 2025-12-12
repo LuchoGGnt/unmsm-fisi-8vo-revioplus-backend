@@ -14,6 +14,7 @@ data class UserEntity(
     @Column("lastName")
     val lastName: String?,
     val email: String,
+    val password: String,
     val phone: String?,
     val city: String?,
     val department: String?,
